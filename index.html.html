@@ -1,0 +1,942 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=3623e50d-07f7-4af8-9cc4-c155b1dbbf7b
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEUROFRAME — нейрофотосессия и видео по фото · Александр</title>
+<meta content="Студия NEUROFRAME Александра: нейрофотосессия, оживление фото в видео и нейроарт. Работаю онлайн по всему миру, срок выполнения — до 2 дней." name="description"/>
+<style>
+:root{
+  --bg:#07070c;
+  --bg-soft:#0d0d16;
+  --panel:#12121e;
+  --panel-2:#181828;
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.18);
+  --text:#f2f2f7;
+  --muted:#9a9ab0;
+  --muted-2:#6e6e86;
+  --acc:#8b5cf6;
+  --acc-2:#22d3ee;
+  --acc-3:#f472b6;
+  --grad:linear-gradient(120deg,#8b5cf6 0%,#22d3ee 55%,#f472b6 100%);
+  --grad-soft:linear-gradient(120deg,rgba(139,92,246,.18),rgba(34,211,238,.14));
+  --r-sm:10px;
+  --r:16px;
+  --r-lg:26px;
+  --shadow:0 24px 60px -20px rgba(0,0,0,.85);
+  --maxw:1180px;
+  --t:.35s cubic-bezier(.2,.7,.3,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- backdrop glows ---------- */
+.glow{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.5}
+.glow.g1{width:600px;height:600px;background:rgba(139,92,246,.35);top:-220px;left:-180px}
+.glow.g2{width:520px;height:520px;background:rgba(34,211,238,.22);top:32%;right:-220px}
+.glow.g3{width:520px;height:520px;background:rgba(244,114,182,.16);bottom:-160px;left:22%}
+
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:var(--t);
+  border-bottom:1px solid transparent;
+}
+header.scrolled{
+  background:rgba(7,7,12,.82);
+  backdrop-filter:blur(18px) saturate(150%);
+  border-bottom-color:var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.12rem;letter-spacing:-.02em}
+.logo-mark{
+  width:34px;height:34px;border-radius:11px;background:var(--grad);
+  display:grid;place-items:center;font-size:.85rem;font-weight:900;color:#07070c;
+  box-shadow:0 0 24px rgba(139,92,246,.5);
+}
+.nav-links{display:flex;gap:30px;font-size:.93rem;color:var(--muted)}
+.nav-links a{transition:color .25s;position:relative}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:-6px;height:1.5px;width:0;
+  background:var(--grad);transition:width .3s;
+}
+.nav-links a:hover::after{width:100%}
+.burger{display:none;flex-direction:column;gap:5px;padding:8px}
+.burger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:var(--t)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:13px 26px;border-radius:100px;font-weight:700;font-size:.93rem;
+  transition:var(--t);white-space:nowrap;
+}
+.btn-primary{background:var(--grad);color:#07070c;box-shadow:0 12px 34px -12px rgba(139,92,246,.9)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 46px -12px rgba(139,92,246,1)}
+.btn-ghost{border:1px solid var(--line-strong);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.34)}
+.btn-sm{padding:10px 20px;font-size:.86rem}
+
+/* ---------- hero ---------- */
+main{position:relative;z-index:1}
+.hero{padding:170px 0 100px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center}
+.tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 15px;border-radius:100px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid var(--line-strong);color:var(--muted);background:rgba(255,255,255,.04);margin-bottom:26px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--acc-2);box-shadow:0 0 10px var(--acc-2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+h1{font-size:clamp(2.3rem,5.2vw,3.9rem);line-height:1.06;letter-spacing:-.035em;font-weight:800;margin-bottom:18px}
+.hero-contact{display:flex;gap:11px;flex-wrap:wrap;margin:0 0 22px}
+.hero-contact a{display:inline-flex;align-items:center;padding:10px 15px;border-radius:100px;border:1px solid var(--line-strong);background:rgba(255,255,255,.04);font-size:.88rem;font-weight:700;transition:var(--t)}
+.hero-contact a:hover{border-color:var(--acc-2);color:var(--acc-2);transform:translateY(-2px)}
+.hero p.lead{font-size:1.08rem;color:var(--muted);max-width:540px;margin-bottom:34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px}
+.hero-stats{display:flex;gap:38px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px}
+.stat b{display:block;font-size:1.6rem;font-weight:800;letter-spacing:-.02em}
+.stat span{font-size:.82rem;color:var(--muted-2)}
+
+/* hero visual */
+.hero-visual{position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--line-strong);background:var(--panel);box-shadow:var(--shadow)}
+.hero-visual .ph{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 30% 25%,rgba(139,92,246,.55),transparent 55%),
+    radial-gradient(circle at 72% 70%,rgba(34,211,238,.42),transparent 55%),
+    radial-gradient(circle at 50% 105%,rgba(244,114,182,.35),transparent 60%),
+    linear-gradient(160deg,#141426,#0a0a12);
+}
+.hero-visual .noise{
+  position:absolute;inset:0;opacity:.28;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+.hero-visual .badge{
+  position:absolute;left:18px;bottom:18px;right:18px;
+  padding:14px 17px;border-radius:14px;
+  background:rgba(7,7,12,.72);backdrop-filter:blur(14px);
+  border:1px solid var(--line-strong);
+  font-size:.84rem;color:var(--muted);display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+.hero-visual .badge strong{color:var(--text);font-size:.9rem;display:block}
+.scanline{
+  position:absolute;left:0;right:0;height:2px;background:var(--grad);
+  box-shadow:0 0 22px 5px rgba(34,211,238,.55);
+  animation:scan 4.2s ease-in-out infinite;opacity:.9;
+}
+@keyframes scan{0%{top:6%}50%{top:92%}100%{top:6%}}
+.portrait-visual .noise,.portrait-visual .scanline{display:none}
+.portrait-visual .ph{background:radial-gradient(circle at 50% 20%,rgba(34,211,238,.24),transparent 48%),linear-gradient(160deg,#25243c,#101018)}
+.alexander-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:1}
+.portrait-note{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;padding:30px;color:var(--text);z-index:1;background:linear-gradient(160deg,rgba(22,22,39,.12),rgba(7,7,12,.45))}
+.portrait-note strong{font-size:1.4rem}
+.portrait-note span{font-size:.85rem;color:var(--muted)}
+.portrait-visual .badge{z-index:2}
+
+/* ---------- sections ---------- */
+section{padding:96px 0;position:relative}
+.sec-head{max-width:640px;margin-bottom:56px}
+.sec-label{
+  font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--acc-2);font-weight:700;margin-bottom:14px;display:block;
+}
+h2{font-size:clamp(1.8rem,3.6vw,2.65rem);line-height:1.14;letter-spacing:-.03em;font-weight:800;margin-bottom:16px}
+.sec-head p{color:var(--muted);font-size:1.02rem}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:20px}
+.card{
+  padding:30px 26px;border-radius:var(--r);
+  background:linear-gradient(165deg,var(--panel),var(--bg-soft));
+  border:1px solid var(--line);transition:var(--t);position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;inset:0;opacity:0;transition:var(--t);
+  background:var(--grad-soft);pointer-events:none;
+}
+.card:hover{transform:translateY(-6px);border-color:var(--line-strong);box-shadow:var(--shadow)}
+.card:hover::before{opacity:1}
+.card > *{position:relative;z-index:1}
+.icon{
+  width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+  background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.34);
+  font-size:1.32rem;margin-bottom:19px;
+}
+.card h3{font-size:1.13rem;font-weight:750;margin-bottom:10px;letter-spacing:-.01em}
+.card p{font-size:.92rem;color:var(--muted);margin-bottom:16px}
+.price-tag{font-size:.86rem;color:var(--acc-2);font-weight:700;letter-spacing:.01em}
+
+/* ---------- process ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:22px;counter-reset:s}
+.step{padding:26px 22px;border-radius:var(--r);border:1px solid var(--line);background:var(--bg-soft);position:relative;transition:var(--t)}
+.step:hover{border-color:rgba(34,211,238,.4);transform:translateY(-4px)}
+.step::before{
+  counter-increment:s;content:'0' counter(s);
+  font-size:2rem;font-weight:900;letter-spacing:-.04em;display:block;margin-bottom:14px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.step h4{font-size:1rem;font-weight:750;margin-bottom:8px}
+.step p{font-size:.87rem;color:var(--muted)}
+
+/* ---------- portfolio ---------- */
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:28px}
+.chip{
+  padding:8px 17px;border-radius:100px;font-size:.84rem;border:1px solid var(--line);
+  color:var(--muted);transition:var(--t);
+}
+.chip:hover{border-color:var(--line-strong);color:var(--text)}
+.chip.on{background:var(--grad);color:#07070c;border-color:transparent;font-weight:700}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:16px}
+.shot{
+  aspect-ratio:1;border-radius:var(--r);overflow:hidden;position:relative;
+  border:1px solid var(--line);transition:var(--t);cursor:pointer;
+}
+.shot img,.shot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shot span{
+  position:absolute;inset:auto 0 0;min-height:46px;display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;color:rgba(255,255,255,.96);font-weight:650;
+  background:rgba(7,7,12,.76);backdrop-filter:blur(4px);opacity:1;transition:var(--t);
+  text-align:center;padding:10px 14px;pointer-events:none;
+}
+.shot:hover span{background:rgba(7,7,12,.9)}
+.shot.video-shot span{min-height:52px;background:rgba(7,7,12,.78)}
+.shot img.missing{display:none}
+.shot:hover{transform:scale(1.03);border-color:var(--line-strong);box-shadow:var(--shadow)}
+.s1{background:linear-gradient(150deg,#2a1a4d,#0b0b14)}
+.s2{background:linear-gradient(150deg,#0e3a44,#0b0b14)}
+.s3{background:linear-gradient(150deg,#4a1a35,#0b0b14)}
+.s4{background:linear-gradient(150deg,#1d2a4d,#0b0b14)}
+.s5{background:linear-gradient(150deg,#3d2f10,#0b0b14)}
+.s6{background:linear-gradient(150deg,#1a3d2a,#0b0b14)}
+.shot.hide{display:none}
+
+/* ---------- pricing ---------- */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(266px,1fr));gap:20px;align-items:start}
+.plan{
+  padding:34px 28px;border-radius:var(--r-lg);border:1px solid var(--line);
+  background:linear-gradient(170deg,var(--panel),var(--bg-soft));transition:var(--t);position:relative;
+}
+.plan:hover{transform:translateY(-5px);border-color:var(--line-strong)}
+.plan.best{border-color:rgba(139,92,246,.55);box-shadow:0 0 0 1px rgba(139,92,246,.25),var(--shadow)}
+.plan.best::after{
+  content:'ЗАКАЗ';position:absolute;top:-11px;right:24px;font-size:.66rem;font-weight:900;letter-spacing:.1em;
+  background:var(--grad);color:#07070c;padding:5px 12px;border-radius:100px;
+}
+.plan h3{font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;color:var(--acc-2);font-weight:800;margin-bottom:16px}
+.plan .amount{font-size:2.3rem;font-weight:850;letter-spacing:-.035em;line-height:1;margin-bottom:6px}
+.plan .amount small{font-size:.95rem;font-weight:600;color:var(--muted);letter-spacing:0}
+.plan .note{font-size:.84rem;color:var(--muted-2);margin-bottom:24px}
+.plan ul{list-style:none;display:grid;gap:11px;margin-bottom:28px}
+.plan li{font-size:.9rem;color:var(--muted);padding-left:24px;position:relative}
+.plan li::before{
+  content:'✓';position:absolute;left:0;top:0;color:var(--acc-2);font-weight:900;font-size:.85rem;
+}
+.plan .btn{width:100%;justify-content:center}
+
+/* ---------- reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.rev{padding:28px 26px;border-radius:var(--r);border:1px solid var(--line);background:var(--bg-soft)}
+.rev p{font-size:.94rem;color:var(--muted);margin-bottom:20px;font-style:italic}
+.rev-who{display:flex;align-items:center;gap:12px}
+.ava{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.9rem;color:#07070c;background:var(--grad)}
+.rev-who b{display:block;font-size:.9rem;font-weight:750}
+.rev-who span{font-size:.79rem;color:var(--muted-2)}
+
+/* ---------- faq ---------- */
+.faq-list{display:grid;gap:11px;max-width:840px}
+.faq{border:1px solid var(--line);border-radius:var(--r);background:var(--bg-soft);overflow:hidden;transition:var(--t)}
+.faq:hover{border-color:var(--line-strong)}
+.faq.open{border-color:rgba(139,92,246,.45)}
+.faq-q{
+  width:100%;display:flex;justify-content:space-between;align-items:center;gap:18px;
+  padding:21px 24px;text-align:left;font-weight:700;font-size:1rem;
+}
+.faq-q i{
+  font-style:normal;font-size:1.3rem;color:var(--acc-2);transition:transform var(--t);
+  line-height:1;flex-shrink:0;
+}
+.faq.open .faq-q i{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.7,.3,1)}
+.faq-a p{padding:0 24px 22px;color:var(--muted);font-size:.93rem}
+
+/* ---------- contact ---------- */
+.contact-box{
+  border-radius:var(--r-lg);border:1px solid var(--line-strong);overflow:hidden;
+  background:linear-gradient(150deg,rgba(139,92,246,.12),rgba(34,211,238,.07) 55%,rgba(244,114,182,.09));
+  padding:52px 46px;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;
+}
+.contact-box h2{margin-bottom:14px}
+.contact-box > div > p{color:var(--muted);font-size:.98rem;margin-bottom:26px}
+.contact-methods{display:grid;gap:11px}
+.cm{
+  display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:14px;
+  border:1px solid var(--line);background:rgba(7,7,12,.42);transition:var(--t);font-size:.92rem;
+}
+.cm:hover{border-color:var(--line-strong);background:rgba(7,7,12,.65);transform:translateX(4px)}
+.cm .ic{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:rgba(139,92,246,.16);font-size:1.05rem;flex-shrink:0}
+.cm b{display:block;font-size:.92rem;font-weight:700}
+.cm span{font-size:.8rem;color:var(--muted-2)}
+
+form{display:grid;gap:14px}
+.field{display:grid;gap:7px}
+.field label{font-size:.82rem;color:var(--muted);font-weight:600}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px 16px;border-radius:12px;font:inherit;font-size:.93rem;
+  background:rgba(7,7,12,.55);border:1px solid var(--line);color:var(--text);
+  transition:var(--t);resize:vertical;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:rgba(139,92,246,.7);box-shadow:0 0 0 3px rgba(139,92,246,.16);
+}
+.field select option{background:var(--panel);color:var(--text)}
+.field textarea{min-height:96px}
+.agree{display:flex;gap:11px;align-items:flex-start;font-size:.8rem;color:var(--muted-2);line-height:1.5}
+.agree input{width:17px;height:17px;flex-shrink:0;margin-top:2px;accent-color:var(--acc)}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:52px 0 34px;margin-top:40px;position:relative;z-index:1}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:38px;margin-bottom:42px}
+.foot-grid h5{font-size:.8rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px;font-weight:800}
+.foot-grid ul{list-style:none;display:grid;gap:10px}
+.foot-grid a,.foot-grid p{font-size:.89rem;color:var(--muted);transition:color .25s}
+.foot-grid a:hover{color:var(--text)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:.83rem;color:var(--muted-2)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:1;transform:none;transition:none;visibility:visible}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .hero-grid,.contact-box{grid-template-columns:1fr;gap:44px}
+  .hero{padding:132px 0 76px}
+  .hero-visual{max-width:420px;margin:0 auto}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .contact-box{padding:38px 26px}
+  .nav-links{display:none}
+  .burger{display:flex}
+  .nav-links.open{
+    display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;
+    gap:0;background:rgba(7,7,12,.97);backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--line);padding:10px 22px 20px;
+  }
+  .nav-links.open a{padding:15px 0;border-bottom:1px solid var(--line);font-size:1rem}
+  header .nav > .btn{display:none}
+}
+@media(max-width:560px){
+  section{padding:70px 0}
+  .hero-stats{gap:26px}
+  .stat b{font-size:1.35rem}
+  .foot-grid{grid-template-columns:1fr}
+  .btn{width:100%;justify-content:center}
+  .hero-cta{flex-direction:column}
+}
+  .poetry-section{background:linear-gradient(180deg,rgba(139,92,246,.08),rgba(34,211,238,.04));}
+  .poetry-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:24px;align-items:stretch}
+  .poetry-card,.song-card{border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(165deg,var(--panel),var(--bg-soft));padding:30px;box-shadow:var(--shadow)}
+  .poetry-card{max-height:620px;overflow:auto}
+  .poetry-card::-webkit-scrollbar{width:7px}.poetry-card::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:9px}
+  .poetry-title{font-size:1.45rem;font-weight:800;margin-bottom:22px}
+  .poetry-text{white-space:pre-line;color:var(--muted);font-family:Georgia,serif;font-size:1.03rem;line-height:1.85}
+  .song-card{display:flex;flex-direction:column;justify-content:space-between;min-height:380px;background:linear-gradient(145deg,rgba(139,92,246,.22),rgba(18,18,30,.96) 58%)}
+  .song-kicker{color:var(--acc-2);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+  .song-card h3{font-size:clamp(1.8rem,3vw,2.7rem);line-height:1.1;margin:15px 0 12px}
+  .song-card p{color:var(--muted);max-width:390px}
+  .audio-box{margin-top:28px;padding:18px;border:1px solid var(--line-strong);border-radius:14px;background:rgba(7,7,12,.46)}
+  .audio-box audio{width:100%;height:42px}
+  .audio-note{display:block;color:var(--muted-2);font-size:.78rem;margin-top:10px}
+  @media(max-width:800px){.poetry-grid{grid-template-columns:1fr}.poetry-card{max-height:none}.song-card{min-height:320px}}
+
+.shot.sunny-case{grid-column:1/-1;aspect-ratio:auto;cursor:default;padding:clamp(16px,3vw,30px);background:var(--panel)}
+.shot.sunny-case:hover{transform:none}
+.sunny-case h3{font-size:1.8rem;margin-bottom:8px}
+.sunny-case p{color:var(--muted);margin-bottom:22px}
+.sunny-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.sunny-pair figure{margin:0;min-width:0}
+.sunny-pair figcaption{color:var(--acc-2);font-weight:700;margin-bottom:12px}
+.shot.sunny-case img,.shot.sunny-case video{position:static;display:block;width:100%;height:auto;aspect-ratio:1232/928;object-fit:contain;background:#07070c;border-radius:12px}
+.sunny-case .sunny-help{font-size:.85rem;margin:18px 0 0}
+@media(max-width:700px){.sunny-pair{grid-template-columns:1fr}}
+.shot.silk-case{grid-column:1/-1;aspect-ratio:auto;cursor:default;padding:clamp(16px,3vw,30px);background:var(--panel)}
+.shot.silk-case:hover{transform:none}
+.silk-case h3{font-size:1.8rem;margin-bottom:8px}
+.silk-case p{color:var(--muted);margin-bottom:22px}
+.silk-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.silk-pair figure{margin:0;min-width:0}
+.silk-pair figcaption{color:var(--acc-2);font-weight:700;margin-bottom:12px}
+.shot.silk-case img,.shot.silk-case video{position:static;display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#07070c;border-radius:12px}
+.silk-case .silk-help{font-size:.85rem;margin:18px 0 0}
+@media(max-width:700px){.silk-pair{grid-template-columns:1fr}}
+
+
+#photo-video,#poetry{scroll-margin-top:100px}
+#photo-video article.rv{opacity:1;transform:none}
+@media(min-width:981px){.nav-links{gap:14px;font-size:.82rem}}
+
+/* Robust display: page content is visible even when local-file animations are unavailable. */
+.rv{opacity:1 !important;transform:none !important;visibility:visible !important}
+#gal .shot{visibility:visible !important}
+#gal .shot img{visibility:visible !important;opacity:1 !important}
+#photo-video article{visibility:visible !important}
+
+
+/* Always show content: animations must never hide the gallery if JavaScript is blocked. */
+.rv,.rv.in{opacity:1!important;transform:none!important;visibility:visible!important}
+#portfolio .shot img{display:block!important;opacity:1!important;visibility:visible!important}
+#photo-video .sunny-pair img,#photo-video .sunny-pair video{display:block!important;opacity:1!important;visibility:visible!important}
+</style>
+<style id="portrait-friendly-gallery">
+/* Portrait-friendly portfolio: show the complete original image without cutting off heads. */
+#portfolio .gallery{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+#portfolio .shot{aspect-ratio:4/5;background:linear-gradient(155deg,#171625,#0a0a12);border-radius:18px;overflow:hidden}
+#portfolio .shot img{object-fit:contain!important;object-position:center center!important;width:100%;height:100%;padding:8px;background:linear-gradient(155deg,rgba(139,92,246,.12),rgba(7,7,12,.92))}
+#portfolio .shot span{min-height:54px;background:linear-gradient(transparent,rgba(7,7,12,.92));padding:20px 12px 11px;text-shadow:0 2px 8px #000}
+#portfolio .shot:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.28);box-shadow:0 18px 38px -20px rgba(0,0,0,.9)}
+@media(max-width:600px){#portfolio .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}#portfolio .shot{border-radius:14px}}
+@media(max-width:380px){#portfolio .gallery{grid-template-columns:1fr}}
+</style>
+<style id="netlify-embedded-media-fix">
+/* Netlify standalone build: images are embedded in this HTML and never need separate paths. */
+.rv,.rv.in{opacity:1!important;transform:none!important;visibility:visible!important}
+#portfolio .shot img{display:block!important;opacity:1!important;visibility:visible!important}
+.hero-visual .alexander-photo{display:block!important;opacity:1!important;visibility:visible!important;z-index:2!important}
+.hero-visual .portrait-note{display:none!important}
+</style>
+<style id="netlify-image-visibility-fix">
+.hero-visual{isolation:isolate;position:relative;overflow:hidden}
+.hero-visual .ph{z-index:0!important}
+.hero-visual img.alexander-photo{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 30%!important;opacity:1!important;visibility:visible!important;z-index:2!important}
+</style>
+</head>
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+<div class="glow g3"></div>
+<header id="hdr">
+<div class="wrap nav">
+<a class="logo" href="#"><span class="logo-mark">NF</span>NEUROFRAME</a>
+<nav class="nav-links" id="nav">
+<a href="#services">Услуги</a>
+<a href="#photo-video">Видео по фото</a>
+<a href="#poetry">Стихи и песни</a>
+<a href="#process">Как это работает</a>
+<a href="#portfolio">Работы</a>
+<a href="#pricing">Цены</a>
+<a href="#faq">Вопросы</a>
+<a href="#contact">Контакты</a>
+</nav>
+<a class="btn btn-primary btn-sm" href="#contact">Обсудить идею</a>
+<button aria-label="Меню" class="burger" id="burger"><span></span><span></span><span></span></button>
+</div>
+</header>
+<main>
+<!-- HERO -->
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<span class="tag rv"><span class="dot"></span>онлайн · работаю по всему миру</span>
+<h1 class="rv">NEUROFRAME<br/><span class="grad-text">нейростудия Александра</span></h1>
+<div class="hero-contact rv">
+<a href="tel:+79778488430">☎  +7 (977) 848-84-30</a>
+<a href="https://max.ru/u/f9LHodD0cOIpbHV1AsN_wp8HaLOO4wm9A2DZu80OTIWdkoyTUS4m8jcaywk" rel="noopener" target="_blank">✉  Написать в MAX</a>
+</div>
+<p class="lead rv">Меня зовут Александр. Мне нравится работать с нейросетями и превращать одно ваше фото в целую вселенную: нейрофотосессия, оживление снимка в видео, портреты в живописи и стиле National Geographic. Вы присылаете кадр — я отдаю историю.</p>
+<div class="hero-cta rv">
+<a class="btn btn-primary" href="#pricing">Узнать стоимость</a>
+<a class="btn btn-ghost" href="#portfolio">Примеры работ</a>
+</div>
+<div class="hero-stats rv">
+<div class="stat"><b>Весь мир</b><span>работаю онлайн</span></div>
+<div class="stat"><b>До 2 дней</b><span>срок выполнения</span></div>
+</div>
+</div>
+<div class="hero-visual rv portrait-visual">
+<div class="ph"></div>
+<img alt="Пара в исторических образах на фоне старинного города — пример нейрофотосессии" class="alexander-photo" src="images/img-01.jpg"/>
+<div class="portrait-note" id="alexanderNote"><strong>Исторический образ</strong><span>Пример нейрофотосессии NEUROFRAME</span></div>
+<div class="badge">
+<div><strong>Александр</strong>нейрокреатор · NEUROFRAME</div>
+<div style="color:var(--acc-2);font-weight:700">MAX</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SERVICES -->
+<section id="services">
+<div class="wrap">
+<div class="sec-head rv">
+<span class="sec-label">Что я делаю</span>
+<h2>Шесть услуг — от кадра до готового видео</h2>
+<p>Любой образ собирается из семи составляющих: тип сцены, герой в полный рост или портрет, одежда, эмоция и поза, окружение, свет и оптика камеры. Ничего не оставляю на «как получится».</p>
+</div>
+<div class="svc-grid">
+<div class="card rv">
+<div class="icon">✦</div>
+<h3>Нейрофотосессия</h3>
+<p>Серия образов по одной вашей фотографии: фэнтези, ретро, киберпанк, живопись, кинопостер, обложка журнала.</p>
+<div class="price-tag">стоимость — по запросу</div>
+</div>
+<div class="card rv">
+<div class="icon">▶</div>
+<h3>Видео по фото</h3>
+<p>Оживляю снимок: поворот головы, улыбка, ветер в волосах, смена стиля внутри одного клипа. 8–15 секунд.</p>
+<div class="price-tag">стоимость — по запросу</div>
+</div>
+<div class="card rv">
+<div class="icon">◈</div>
+<h3>Нейротрансформация</h3>
+<p>Вы в другой эпохе, в образе персонажа, с другой внешностью и фигурой. Обсуждаем идею — собираю точный промпт.</p>
+<div class="price-tag">стоимость — по запросу</div>
+</div>
+<div class="card rv">
+<div class="icon">✎</div>
+<h3>Стилизация под живопись</h3>
+<p>Масло, акварель, карандашный скетч, вектор. Готово к печати постером или подарком в раме.</p>
+<div class="price-tag">стоимость — по запросу</div>
+</div>
+<div class="card rv">
+<div class="icon">◍</div>
+<h3>Диджитал-декорации</h3>
+<p>Переношу вашу фигуру в интерьер мечты или пейзаж: галактика, сад, лофт, студия National Geographic.</p>
+<div class="price-tag">стоимость — по запросу</div>
+</div>
+<div class="card rv">
+<div class="icon">⌘</div>
+<h3>Кастом под задачу</h3>
+<p>Анимированные аватары для стрима, нейропанно на заказ, контент-пак для бренда или соцсетей.</p>
+<div class="price-tag">стоимость — по запросу</div>
+</div>
+</div>
+</div>
+</section>
+<!-- POETRY & SONGS -->
+<section class="poetry-section" id="poetry">
+<div class="wrap">
+<div class="sec-head rv">
+<span class="sec-label">Стихи и песни</span>
+<h2>Весь материал заказчика — в одном месте</h2>
+<p>Показываем исходное стихотворение рядом с готовой песней, чтобы история, текст и настроение воспринимались как единое произведение.</p>
+</div>
+<div class="poetry-grid">
+<article class="poetry-card rv">
+<div class="poetry-title">Дождливый день</div>
+<div class="poetry-text">Дождливый день, и ночь ему подстать...
+Решило лето сделать передышку.
+В такое время хорошо молчать,
+Взяв с полки читаную старенькую книжку.
+
+И пусть стекают по окну ручьи,
+Смывая пыльный след жары июльской.
+А вдалеке сердито гром ворчит,
+И кланяется ветру клён сутулясь.
+
+Дождинки дробью бьются по стеклу,
+Выстукивая грустный ритм печали.
+Да тени тихо сгрудились в углу —
+Под песню непогоды задремали...
+
+И как же мне бывает нужен дождь —
+Такой вот, сильный, злой, неугомонный!
+Под ним и оживёшь, и прорастёшь,
+Умывши душу влагой заговорённой.
+
+Где в каждой капле — красота небес,
+И чистота, и сила неземная...
+И снова полон добрый мир чудес,
+А в сердце новом — счастья кладовая!
+
+В ночь дождик — утра чистого залог,
+И обещанье дня, наполненного светом...</div>
+</article>
+<article class="song-card rv">
+<div>
+<div class="song-kicker">Готовая песня · 03:45</div>
+<h3>Дождливый день</h3>
+<p>Стихотворение превращено в лирическую песню с женским вокалом, фортепиано и струнным сопровождением.</p>
+</div>
+<div class="audio-box">
+<audio aria-label="Песня Дождливый день" controls="" preload="metadata"><source src="https://r2.syntx.ai/user_6551158506976228110/llms/e0496ecb588a029ba92f2e0f3cfd7bfc_Дождливый%20день%20..mp3" type="audio/mpeg"/>Ваш браузер не поддерживает аудиоплеер.</audio>
+<span class="audio-note">Нажмите ▶, чтобы прослушать песню</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- PROCESS -->
+<section id="process">
+<div class="wrap">
+<div class="sec-head rv">
+<span class="sec-label">Как это работает</span>
+<h2>Пять шагов от вашего фото до результата</h2>
+<p>Никаких технических терминов — вы описываете идею словами, я перевожу её на язык нейросетей.</p>
+</div>
+<div class="steps">
+<div class="step rv"><h4>Связываетесь со мной</h4><p>Напишите в MAX или позвоните. Расскажите, какой результат хотите получить.</p></div>
+<div class="step rv"><h4>Обсуждаем задачу</h4><p>Согласуем услугу, идею, исходное фото, цену и срок до начала работы.</p></div>
+<div class="step rv"><h4>Подтверждаем условия</h4><p>Перед началом фиксируем, какой материал будет создан и как будет выглядеть готовый результат.</p></div>
+<div class="step rv"><h4>Создаю материал</h4><p>Подготавливаю изображение или видео по согласованной идее и параметрам заказа.</p></div>
+<div class="step rv"><h4>Передаю результат</h4><p>Готовый материал передаю согласованным способом. Срок выполнения — до 2 дней.</p></div>
+</div>
+</div>
+</section>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+<div class="wrap">
+<div class="sec-head rv">
+<span class="sec-label">Портфолио</span>
+<h2>Работы по направлениям</h2>
+<p>Выберите стиль, чтобы увидеть примеры нейрофотосессий. Подписи описывают настроение и сюжет каждого изображения. Исходные фото и видео по ним собраны отдельно в разделе «Видео по фото».</p>
+</div>
+<div class="filters rv">
+<button class="chip on" data-f="all">Все работы</button>
+<button class="chip" data-f="fantasy">Фэнтези</button>
+<button class="chip" data-f="retro">Ретро</button>
+<button class="chip" data-f="fresco">Фреска</button>
+<button class="chip" data-f="natgeo">National Geographic</button>
+<button class="chip" data-f="portrait">Портрет-живопись</button>
+<button class="chip" data-f="painting">Стилизация под живопись</button>
+<button class="chip" data-f="transform">Нейротрансформация</button>
+<a class="chip" href="#photo-video">Видео по фото ↗</a>
+</div>
+<div class="gallery" id="gal">
+<div class="shot s1 rv" data-c="fantasy"><img alt="Фэнтези — работа 1" loading="eager" src="images/img-02.jpg"/><span>Фэнтези · 1</span></div>
+<div class="shot s2 rv" data-c="fantasy"><img alt="Фэнтези — работа 2" loading="eager" src="images/img-03.jpg"/><span>Фэнтези · 2</span></div>
+<div class="shot s3 rv" data-c="fantasy"><img alt="Фэнтези — работа 3" loading="eager" src="images/img-04.jpg"/><span>Фэнтези · 3</span></div>
+<div class="shot s4 rv" data-c="fantasy"><img alt="Фэнтези — работа 4" loading="eager" src="images/img-05.jpg"/><span>Фэнтези · 4</span></div>
+<div class="shot s1 rv" data-c="retro"><img alt="Ретро — работа 1" loading="eager" src="images/img-06.jpg"/><span>Ретро · 1</span></div>
+<div class="shot s2 rv" data-c="retro"><img alt="Ретро — работа 2" loading="eager" src="images/img-07.jpg"/><span>Ретро · 2</span></div>
+<div class="shot s3 rv" data-c="retro"><img alt="Ретро — работа 3" loading="eager" src="images/img-08.jpg"/><span>Ретро · 3</span></div>
+<div class="shot s4 rv" data-c="retro"><img alt="Ретро — работа 4" loading="eager" src="images/img-09.jpg"/><span>Ретро · 4</span></div>
+<div class="shot s1 rv" data-c="fresco"><img alt="Фреска — работа 1" loading="eager" src="images/img-10.jpg"/><span>Фреска · 1</span></div>
+<div class="shot s2 rv" data-c="fresco"><img alt="Фреска — работа 2" loading="eager" src="images/img-11.jpg"/><span>Фреска · 2</span></div>
+<div class="shot s3 rv" data-c="fresco"><img alt="Фреска — работа 3" loading="eager" src="images/img-12.jpg"/><span>Фреска · 3</span></div>
+<div class="shot s4 rv" data-c="fresco"><img alt="Фреска — работа 4" loading="eager" src="images/img-13.jpg"/><span>Фреска · 4</span></div>
+<div class="shot s1 rv" data-c="natgeo"><img alt="National Geographic — работа 1" loading="eager" src="images/img-14.jpg"/><span>National Geographic · 1</span></div>
+<div class="shot s2 rv" data-c="natgeo"><img alt="National Geographic — работа 2" loading="eager" src="images/img-15.jpg"/><span>National Geographic · 2</span></div>
+<div class="shot s3 rv" data-c="natgeo"><img alt="National Geographic — работа 3" loading="eager" src="images/img-16.jpg"/><span>National Geographic · 3</span></div>
+<div class="shot s4 rv" data-c="natgeo"><img alt="National Geographic — работа 4" loading="eager" src="images/img-17.jpg"/><span>National Geographic · 4</span></div>
+<div class="shot s1 rv" data-c="portrait"><img alt="Портрет в стиле живописи — работа 1" loading="eager" src="images/img-18.jpg"/><span>Портрет-живопись · 1</span></div>
+<div class="shot s2 rv" data-c="portrait"><img alt="Портрет в стиле живописи — работа 2" loading="eager" src="images/img-19.jpg"/><span>Портрет-живопись · 2</span></div>
+<div class="shot s3 rv" data-c="portrait"><img alt="Портрет в стиле живописи — работа 3" loading="eager" src="images/img-20.jpg"/><span>Портрет-живопись · 3</span></div>
+<div class="shot s4 rv" data-c="portrait"><img alt="Портрет в стиле живописи — работа 4" loading="eager" src="images/img-21.jpg"/><span>Портрет-живопись · 4</span></div>
+<div class="shot s1 rv" data-c="painting"><img alt="Стилизация под живопись — работа 1" loading="eager" src="images/img-22.jpg"/><span>Стилизация под живопись · 1</span></div>
+<div class="shot s2 rv" data-c="painting"><img alt="Стилизация под живопись — работа 2" loading="eager" src="images/img-23.jpg"/><span>Стилизация под живопись · 2</span></div>
+<div class="shot s3 rv" data-c="painting"><img alt="Стилизация под живопись — работа 3" loading="eager" src="images/img-24.jpg"/><span>Стилизация под живопись · 3</span></div>
+<div class="shot s4 rv" data-c="painting"><img alt="Стилизация под живопись — работа 4" loading="eager" src="images/img-25.jpg"/><span>Стилизация под живопись · 4</span></div>
+<div class="shot s1 rv" data-c="transform"><img alt="Нейротрансформация — работа 1" loading="eager" src="images/img-26.jpg"/><span>Нейротрансформация · 1</span></div>
+<div class="shot s2 rv" data-c="transform"><img alt="Нейротрансформация — работа 2" loading="eager" src="images/img-27.jpg"/><span>Нейротрансформация · 2</span></div>
+<div class="shot s3 rv" data-c="transform"><img alt="Нейротрансформация — работа 3" loading="eager" src="images/img-28.jpg"/><span>Нейротрансформация · 3</span></div>
+<div class="shot s4 rv" data-c="transform"><img alt="Нейротрансформация — работа 4" loading="eager" src="images/img-29.jpg"/><span>Нейротрансформация · 4</span></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="photo-video-title" id="photo-video">
+<div class="wrap">
+<div class="sec-head">
+<span class="sec-label">От фото к движению</span>
+<h2 id="photo-video-title">Видео по фото</h2>
+<p>Сравните исходную фотографию и созданное по ней видео. Каждый пример — одна история в двух форматах.</p>
+</div>
+<div class="video-cases" style="display:grid;gap:32px">
+<article aria-labelledby="sunny-title" class="shot sunny-case rv" data-c="video" id="sunny-park">
+<h3 id="sunny-title">Солнечный парк</h3>
+<p>От фотографии к движению — исходное изображение и видео по нему рядом.</p>
+<div class="sunny-pair">
+<figure><figcaption>01 / Исходное фото</figcaption><a aria-label="Открыть исходное фото Солнечный парк полностью" href="images/img-30.png" rel="noopener" target="_blank"><img alt="Солнечный парк — исходное фото" height="928" loading="lazy" src="images/img-30.png" width="1232"/></a></figure>
+<figure><figcaption>02 / Видео по фото</figcaption><video aria-label="Солнечный парк — видео по исходному фото" controls="" playsinline="" poster="images/img-30.png" preload="metadata" src="videos/%D0%A1%D0%BE%D0%BB%D0%BD%D0%B5%D1%87%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA%20.%20%D0%92%D0%B8%D0%B4%D0%B5%D0%BE/%D0%A1%D0%BE%D0%BB%D0%BD%D0%B5%D1%87%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA%20..mp4">Ваш браузер не поддерживает видео. <a href="videos/%D0%A1%D0%BE%D0%BB%D0%BD%D0%B5%D1%87%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA%20.%20%D0%92%D0%B8%D0%B4%D0%B5%D0%BE/%D0%A1%D0%BE%D0%BB%D0%BD%D0%B5%D1%87%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA%20..mp4">Открыть видео</a></video></figure>
+</div>
+<p class="sunny-help">Нажмите ▶ на видео, чтобы увидеть результат. Фото можно открыть в полном размере.</p>
+</article>
+<article aria-labelledby="silk-title" class="shot silk-case rv" data-c="video" id="silk-road">
+<h3 id="silk-title">Шёлковый путь</h3>
+<p>Исходное фото и видео по фото собраны рядом, чтобы заказчик сразу видел, как статичный образ превращается в движение.</p>
+<div class="silk-pair">
+<figure><figcaption>01 / Исходное фото</figcaption><a aria-label="Открыть исходное фото Шёлковый путь полностью" href="images/img-33.jpg" rel="noopener" target="_blank"><img alt="Шёлковый путь — исходное фото" height="1440" loading="lazy" src="images/img-33.jpg" width="1920"/></a></figure>
+<figure><figcaption>02 / Видео по фото</figcaption><video aria-label="Шёлковый путь — видео по исходному фото" controls="" playsinline="" poster="images/img-33.jpg" preload="metadata" src="videos/%D0%A8%D1%91%D0%BB%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BF%D1%83%D1%82%D1%8C%20.%20%D0%92%D0%B8%D0%B4%D0%B5%D0%BE/%D0%A8%D1%91%D0%BB%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BF%D1%83%D1%82%D1%8C.mp4">Ваш браузер не поддерживает видео. <a href="videos/%D0%A8%D1%91%D0%BB%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BF%D1%83%D1%82%D1%8C%20.%20%D0%92%D0%B8%D0%B4%D0%B5%D0%BE/%D0%A8%D1%91%D0%BB%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BF%D1%83%D1%82%D1%8C.mp4">Открыть видео</a></video></figure>
+</div>
+<p class="silk-help">Нажмите ▶ на видео, чтобы увидеть результат. Фото можно открыть в полном размере.</p>
+</article>
+</div>
+</div>
+</section>
+<!-- PRICING -->
+<section id="pricing">
+<div class="wrap">
+<div class="sec-head rv">
+<span class="sec-label">Стоимость</span>
+<h2>Цена рассчитывается индивидуально</h2>
+<p>Стоимость зависит от услуги, количества изображений и сложности идеи. Напишите Александру — обсудим задачу и согласуем цену до начала работы. Срок выполнения — до 2 дней.</p>
+</div>
+<div class="plan best rv" style="max-width:560px;margin:0 auto;text-align:center">
+<h3>Заказ NEUROFRAME</h3>
+<div class="amount" style="font-size:2rem">По запросу</div>
+<div class="note">Сначала согласуем объём и стоимость — никаких неожиданных доплат</div>
+<ul style="text-align:left">
+<li>Нейрофотосессия по вашему фото</li>
+<li>Видео по фото и оживление снимков</li>
+<li>Портреты в живописи и других стилях</li>
+<li>Работа онлайн по всему миру</li>
+<li>Срок выполнения — до 2 дней</li>
+</ul>
+<a class="btn btn-primary" href="#contact">Уточнить стоимость</a>
+</div>
+</div>
+</section>
+<!-- ABOUT -->
+<section id="about">
+<div class="wrap">
+<div class="sec-head rv">
+<span class="sec-label">О создателе</span>
+<h2>Александр — нейрокреатор NEUROFRAME</h2>
+<p>Мне нравится работать с нейросетями и превращать идеи в визуальные истории. Создаю нейрофотосессии, видео по фото и художественные образы. Работаю онлайн с заказчиками по всему миру; срок выполнения — до 2 дней.</p>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section id="faq">
+<div class="wrap">
+<div class="sec-head rv">
+<span class="sec-label">Вопросы</span>
+<h2>Частые вопросы новичков</h2>
+</div>
+<div class="faq-list">
+<div class="faq rv">
+<button class="faq-q">Какое фото нужно для начала?<i>+</i></button>
+<div class="faq-a"><p>Одно чёткое фото лица в анфас или в полный рост — при дневном свете, без капюшона, солнечных очков и тяжёлых фильтров. Чем ровнее освещение, тем точнее сохранится сходство.</p></div>
+</div>
+<div class="faq rv">
+<button class="faq-q">Сколько по времени занимает работа?<i>+</i></button>
+<div class="faq-a"><p>Срок выполнения — до 2 дней. Точный срок зависит от выбранной услуги и объёма работы; я подтвержу его до начала заказа.</p></div>
+</div>
+<div class="faq rv">
+<button class="faq-q">Что если образ мне не понравится?<i>+</i></button>
+<div class="faq-a"><p>До начала работы мы обсудим идею, ожидаемый результат, стоимость и условия возможных правок. Так вы будете понимать, что именно входит в заказ.</p></div>
+</div>
+<div class="faq rv">
+<button class="faq-q">Кому принадлежат права на изображения?<i>+</i></button>
+<div class="faq-a"><p>Условия использования готовых изображений согласуем до начала заказа. Ваши фотографии и результат не будут добавлены в портфолио без отдельного согласия.</p></div>
+</div>
+<div class="faq rv">
+<button class="faq-q">Как я получу результат?<i>+</i></button>
+<div class="faq-a"><p>Способ передачи файлов согласуем при оформлении заказа. Можно обсудить удобный для вас канал получения материалов.</p></div>
+</div>
+<div class="faq rv">
+<button class="faq-q">Можно заказать в подарок?<i>+</i></button>
+<div class="faq-a"><p>Да, можно обсудить такой заказ. Напишите, для кого подарок и какой результат хотите получить — я предложу, какой формат подойдёт.</p></div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+<div class="wrap">
+<div class="contact-box rv">
+<div>
+<span class="sec-label">Связаться</span>
+<h2>Расскажите идею — предложу три варианта</h2>
+<p>Напишите, какой образ вам нужен. Обсудим услугу, стоимость и срок до начала работы.</p>
+<div class="contact-methods">
+<a class="cm" href="https://max.ru/u/f9LHodD0cOIpbHV1AsN_wp8HaLOO4wm9A2DZu80OTIWdkoyTUS4m8jcaywk" rel="noopener" target="_blank"><span class="ic">✉</span><span><b>MAX — написать Александру</b><span>открыть мой профиль в MAX</span></span></a>
+<a class="cm" href="tel:+79778488430"><span class="ic">☏</span><span><b>+7 (977) 848-84-30</b><span>позвонить</span></span></a>
+</div>
+</div>
+<form id="form" novalidate="">
+<div class="field">
+<label for="n">Как вас зовут</label>
+<input id="n" name="name" placeholder="Анна" required="" type="text"/>
+</div>
+<div class="field">
+<label for="c">Связь</label>
+<input id="c" name="contact" placeholder="номер телефона или MAX" required="" type="text"/>
+</div>
+<div class="field">
+<label for="s">Услуга</label>
+<select id="s" name="service">
+<option>Нейрофотосессия</option>
+<option>Видео по фото</option>
+<option>Нейротрансформация</option>
+<option>Стилизация под живопись</option>
+<option>Диджитал-декорации</option>
+<option>Кастом под задачу</option>
+</select>
+</div>
+<div class="field">
+<label for="m">Идея образа</label>
+<textarea id="m" name="msg" placeholder="Хочу образ в стиле National Geographic: рассвет, горы, я в походной куртке..."></textarea>
+</div>
+<label class="agree"><input id="ok" required="" type="checkbox"/><span>Согласен(на) на обработку персональных данных и получение ответа по указанному контакту.</span></label>
+<button class="btn btn-primary" type="submit">Подготовить заявку в MAX</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<a class="logo" href="#" style="margin-bottom:14px"><span class="logo-mark">NF</span>NEUROFRAME</a>
+<p style="max-width:290px">Студия нейровизуального контента. Фото, видео и арт по вашему снимку — образы, которых не существует.</p>
+</div>
+<div>
+<h5>Услуги</h5>
+<ul>
+<li><a href="#services">Нейрофотосессия</a></li>
+<li><a href="#services">Видео по фото</a></li>
+<li><a href="#services">Нейротрансформация</a></li>
+<li><a href="#services">Диджитал-декорации</a></li>
+</ul>
+</div>
+<div>
+<h5>Информация</h5>
+<ul>
+<li><a href="#process">Как это работает</a></li>
+<li><a href="#pricing">Цены</a></li>
+<li><a href="#portfolio">Портфолио</a></li>
+<li><a href="#faq">Вопросы</a></li>
+</ul>
+</div>
+<div>
+<h5>Контакты</h5>
+<ul>
+<li><a href="https://max.ru/u/f9LHodD0cOIpbHV1AsN_wp8HaLOO4wm9A2DZu80OTIWdkoyTUS4m8jcaywk" rel="noopener" target="_blank">MAX</a></li>
+<li><a href="tel:+79778488430">+7 (977) 848-84-30</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© NEUROFRAME · Александр</span>
+<span>Онлайн-заказы по всему миру</span>
+</div>
+</div>
+</footer>
+<script>
+/* шапка */
+const hdr = document.getElementById('hdr');
+addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 20));
+
+/* мобильное меню */
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+burger.addEventListener('click', () => nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+/* появление блоков */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 70);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: .12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* аккордеон */
+document.querySelectorAll('.faq').forEach(f => {
+  const q = f.querySelector('.faq-q');
+  const a = f.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = f.classList.contains('open');
+    document.querySelectorAll('.faq').forEach(o => {
+      o.classList.remove('open');
+      o.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if (!isOpen) {
+      f.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+
+/* фильтр портфолио */
+document.querySelectorAll('button.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('button.chip').forEach(c => c.classList.remove('on'));
+    chip.classList.add('on');
+    const f = chip.dataset.f;
+    document.querySelectorAll('#gal .shot').forEach(s => {
+      s.classList.toggle('hide', f !== 'all' && s.dataset.c !== f);
+    });
+  });
+});
+
+/* форма: копирует текст заявки и открывает профиль MAX */
+document.getElementById('form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type=submit]');
+  if (!document.getElementById('ok').checked) {
+    btn.textContent = 'Сначала отметьте согласие';
+    setTimeout(() => btn.textContent = 'Подготовить заявку в MAX', 2200);
+    return;
+  }
+  const message = [
+    'Заявка с сайта NEUROFRAME',
+    'Имя: ' + document.getElementById('n').value,
+    'Контакт для ответа: ' + document.getElementById('c').value,
+    'Услуга: ' + document.getElementById('s').value,
+    'Идея: ' + (document.getElementById('m').value || 'не указана')
+  ].join('\\n');
+  window.open('https://max.ru/u/f9LHodD0cOIpbHV1AsN_wp8HaLOO4wm9A2DZu80OTIWdkoyTUS4m8jcaywk', '_blank', 'noopener');
+  try {
+    await navigator.clipboard.writeText(message);
+    btn.textContent = 'Заявка скопирована — вставьте в MAX';
+  } catch (err) {
+    window.prompt('Скопируйте текст заявки и отправьте его в MAX:', message);
+    btn.textContent = 'Профиль MAX открыт';
+  }
+  setTimeout(() => btn.textContent = 'Подготовить заявку в MAX', 5000);
+});
+
+/* Тематические названия работ портфолио */
+const portfolioTitles = {
+  fantasy: ['Хранительница зачарованного леса', 'Сказочный образ в мягком свете', 'Таинственная героиня фэнтези', 'Пейзаж из волшебного мира'],
+  retro: ['Винтажный кинопортрет', 'Ретро-образ с плёночным настроением', 'Героиня старого кино', 'Атмосфера прошлого века'],
+  fresco: ['Портрет в духе старинной фрески', 'Муза античной легенды', 'Образ из древней истории', 'Фреска сквозь века'],
+  natgeo: ['Встреча с дикой природой', 'Экспедиция в неизведанное', 'Человек и мир природы', 'Мир глазами исследователя'],
+  portrait: ['Живописный портрет в тёплых тонах', 'Портрет как картина маслом', 'Художественный женский образ', 'Портрет из старинной галереи'],
+  painting: ['Нежный образ в акварельной манере', 'Портрет в стиле классической живописи', 'Мягкая палитра и кистевые мазки', 'Художественная история в красках'],
+  transform: ['Новый образ — новая история', 'Перевоплощение в сказочный мир', 'Портрет в необычном амплуа', 'Нейрообраз с характером']
+};
+document.querySelectorAll('#gal .shot').forEach(card => {
+  const key = card.dataset.c;
+  const index = Array.from(document.querySelectorAll('#gal .shot[data-c="' + key + '"]')).indexOf(card);
+  const title = portfolioTitles[key]?.[index];
+  if (title) {
+    const image = card.querySelector('img');
+    const caption = card.querySelector('span');
+    if (image) image.alt = title;
+    if (caption) caption.textContent = title;
+  }
+});
+</script>
+</body>
+</html>
+<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="3623e50d-07f7-4af8-9cc4-c155b1dbbf7b" data-app-host="app.netlify.com"></script>
